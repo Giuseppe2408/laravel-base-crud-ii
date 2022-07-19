@@ -17,9 +17,11 @@
                         <a class="mx-2" href="{{route('comics.edit', ['comic' => $comic])}}">
                             <button class="btn btn-warning">Edit</button>
                         </a>
-                        <a href="#">
+                        <form action="{{route('comics.destroy', ['comic' => $comic])}}" method="post">
+                            @csrf
+                            @method('DELETE')
                             <button class="btn btn-danger">Delete</button>
-                        </a>
+                        </form>
                     </div>
                     
                 </div>

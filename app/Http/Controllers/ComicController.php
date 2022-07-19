@@ -84,7 +84,7 @@ class ComicController extends Controller
     {
         $data = $request->all();
         $comic->update($data);
-        return redirect('comics.show', ['comic' => $comic]);
+        return redirect('comics', 302, ['comic' => $comic]);
     }
 
     /**
@@ -93,8 +93,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        return redirect('comics', 302, ['comic' => $comic]);
     }
 }
