@@ -45,6 +45,8 @@ class ComicController extends Controller
             $comic->sale_date = $formData['sale_date'];
             $comic->type = $formData['type'];
             $comic->save();
+
+            return redirect('comics');
     }
 
     /**
@@ -66,9 +68,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('admin.comics.edit', compact('comic'));
     }
 
     /**
@@ -78,9 +80,11 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+        $comic->update($data);
+        return redirect('comics.show', ['comic' => $comic]);
     }
 
     /**
