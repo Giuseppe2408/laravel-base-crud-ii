@@ -13,12 +13,12 @@ class ComicTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 40; $i++) { 
             $comic = new Comic();
             $comic->title = $faker->name();
             $comic->description = $faker->text();
             $comic->thumb = $faker->image();
-            $comic->price = rand(1,100);
+            $comic->price = rand(1,1000);
             $comic->series = $faker->name();
             $comic->sale_date = $faker->date();
             $comic->type = $faker->name();
